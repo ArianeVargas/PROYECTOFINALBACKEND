@@ -34,6 +34,7 @@ routers.put("/nuevaPassword", [
 routers.post('/usuariocrear', [
     check("Nombre", "Ingrese nombre Usuario").not().isEmpty(),
     check("Identificacion", "Ingrese su identificacion").not().isEmpty(),
+    check("Identificacion").custom(helpersUsuario.IdentificacionExistente),
     check("Telefono", "Ingrese su numero de telefono").not().isEmpty(),
     check("Correo", "Ingrese su correo").not().isEmpty(),
     check("Contraseña", "Ingrese su contraseña ").not().isEmpty(),
