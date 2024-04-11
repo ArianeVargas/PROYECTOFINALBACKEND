@@ -239,6 +239,10 @@ const httpUsuarios = {
 
         const usuario = Usuarios.findOne({ Correo });
 
+        if (!usuario) {
+          return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+
         const salt = bcryptjs.genSaltSync();
         const newPassword = bcryptjs.hashSync(Contraseña, salt);
 
@@ -248,6 +252,11 @@ const httpUsuarios = {
           { new: true }
         );
 
+        console.log(
+          "Información del usuario antes de actualizar la contraseña:",
+          usuario
+        );
+        
         return res
           .status(200)
           .json({ msg: "Contraseña actualizada con éxito" });
