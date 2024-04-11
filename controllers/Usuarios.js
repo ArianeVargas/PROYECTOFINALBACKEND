@@ -237,7 +237,7 @@ const httpUsuarios = {
       if (codigo === codigoGuardado) {
         codigoEnviado = {};
 
-        const usuario = Usuarios.findOne({ Correo });
+        const usuario = await Usuarios.findOne({ Correo });
 
         if (!usuario) {
           return res.status(404).json({ error: "Usuario no encontrado" });
@@ -256,7 +256,7 @@ const httpUsuarios = {
           "Información del usuario antes de actualizar la contraseña:",
           usuario
         );
-        
+
         return res
           .status(200)
           .json({ msg: "Contraseña actualizada con éxito" });
