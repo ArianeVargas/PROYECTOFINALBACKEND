@@ -6,15 +6,15 @@ const httpSalida = {
     try {
       const salidas = await Salida.find().populate("Pedido_id").populate("Usuario_id");
 
-      const detSalidas = salidas.map(async (e) => {
+      /* const detSalidas = salidas.map(async (e) => {
         e.detSalida= await DetalleSalida.find({Pedido_id:e._id});
       });
 
-      await Promise.all(detSalidas);
+      await Promise.all(detSalidas); */
 
       res.json(salidas);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ error: "error.message" });
     }
   },
 
