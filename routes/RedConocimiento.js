@@ -14,8 +14,8 @@ router.get('/redconocimientobuscanombre/:Nombre', validarJWT, httpRedConocimient
 
 
 router.post('/redconocimentocrear', [
-    validarJWT,
-    validarRolAdmin,
+    /* validarJWT,
+    validarRolAdmin, */
     check("Nombre", "Ingrese un nombre").not().isEmpty(),
     check('Nombre').custom(helpersRedConocimiento.existeNombre),
     validarCampos
