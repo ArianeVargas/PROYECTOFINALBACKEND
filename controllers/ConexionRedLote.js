@@ -27,7 +27,29 @@ const httpConexRedLote = {
     }
   },
 
-  // Post
+  getPorLote: async (req, res) => {
+    const Lote_id = req.params.Lote_id;
+
+    try {
+      const conexiones = await ConexRedLote.find({ Lote_id }).populate("Red_id").populate("Lote_id")
+      res.json(conexiones);
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  },
+
+  getPorRed: async (req, res) => {
+    const Red_id = req.params.Red_id;
+
+    try {
+      const conexiones = await ConexRedLote.find({ Red_id }).populate("Lote_id").populate("Red_id")
+
+      res.json(conexiones);
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  },
+
   postConexionRedLote: async (req, res) => {
     try {
       const { Red_id, Lote_id } = req.body;
@@ -45,7 +67,7 @@ const httpConexRedLote = {
     }
   },
 
-  // Put
+  
   putConexionRedLote: async (req, res) => {
     try {
       const { id } = req.params;

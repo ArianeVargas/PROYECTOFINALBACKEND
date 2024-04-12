@@ -3,21 +3,17 @@ import mongoose from "mongoose";
 import types from "mongoose"
 
 const ProductoSchema = new mongoose.Schema({
-    Codigo: { type: Number, required: true, unique: true },
-    Nombre: { type: String, required: true },
-    Descripcion: { type: String, required: true },
-    UnidadMedida: { type: String, required: true},
-    PrecioUnitario: { type: Number, required: true},
-    Iva: {type: Number, required: true},
-    Consumible: { type: Boolean, required: true},
-    /* ImagenUrl: { type: String }, */
-    createAT: { type: Date, default: Date.now },
-    Estado: { type: Number, default: 1 },
-    Lote_Id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Lote",
-        required: true,
-    },
+    Codigo: { type: String, index: 'text', require: true, unique: true },
+    Nombre: { type: String, require: true },
+    Descripcion: { type: String, require: true },
+    UnidadMedida: { type: String, require: true },
+    PrecioUnitario: { type: Number, require: true },
+    Iva: { type: Number, require: true },
+    TipoProducto: { type: String, require: true },
+    Cantidad: { type: Number, default: 0 },
+    Lote_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Lote', require: true },
+    Estado: { type: Boolean, default: 1 },
+    createAT: { type: Date, default: Date.now }
 })
 
 export default mongoose.model("Producto", ProductoSchema)

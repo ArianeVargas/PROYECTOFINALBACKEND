@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const DetallePedidoSchema = new mongoose.Schema({
+    Numero: { type: Number, require: true },
     Cantidad: { type: Number, required: true },
     SubTotal: { type: Number, required: true },
     createAT: { type: Date, default: Date.now },

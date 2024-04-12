@@ -11,7 +11,6 @@ import Destino from "./routes/Destino.js";
 import DetalleSalida from "./routes/DetalleSalida.js";
 import DistribucionAreaDestino from "./routes/DistribucionAreaDestino.js";
 import DistribucionContratoLote from "./routes/DistribucionContratoLote.js";
-import DistribucionDependencia from "./routes/DistribucionDependencia.js";
 import DistribucionDependenciaRed from "./routes/DistribucionDependenciaRed.js";
 import DistribucionRedArea from "./routes/DistribucionRedArea.js";
 import Entrada from "./routes/Entrada.js";
@@ -19,6 +18,7 @@ import RedConocimiento from "./routes/RedConocimiento.js";
 import Salida from "./routes/Salida.js";
 import Usuarios from "./routes/Usuarios.js";
 import Contrato from "./routes/Contrato.js";
+import ConexionRedLote from "./routes/ConexionRedLote.js";
 import cors from "cors"
 
 
@@ -36,9 +36,9 @@ index.use("/api/contrato", Contrato)
 index.use("/api/dependecias", Dependencia)
 index.use("/api/destino", Destino)
 index.use("/api/detallesalida", DetalleSalida)
+index.use("/api/conexionredlote", ConexionRedLote)
 index.use("/api/disareadestino", DistribucionAreaDestino)
 index.use("/api/disconlote", DistribucionContratoLote)
-index.use("/api/disdependecia", DistribucionDependencia)
 index.use("/api/disdepred", DistribucionDependenciaRed)
 index.use("/api/disredarea", DistribucionRedArea)
 index.use("/api/entrada", Entrada)

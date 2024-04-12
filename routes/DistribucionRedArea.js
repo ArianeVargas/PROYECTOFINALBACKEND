@@ -22,13 +22,13 @@ router.get(
     httpDisRedArea.getDisRedAreaId
 );
 
-router.get('/disredareabuscadistribucion/:DistribucionPresupuesto_id', [
+/* router.get('/disredareabuscadistribucion/:DistribucionPresupuesto_id', [
     validarJWT,
     validarRolAdmin,
     check('DsitribucionDependenciaRed_id', 'Campo Vacio').not().isEmpty(),
     check('DsitribucionDependenciaRed_id', 'Valor no Valido').isMongoId(),
     validarCampos
-], httpDisRedArea.getDisRedAreaIdDistribucion)
+], httpDisRedArea.getDisRedAreaIdDistribucion) */
 
 router.post(
     "/agregar",

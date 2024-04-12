@@ -51,7 +51,7 @@ routers.put(
 );
 
 routers.put(
-  "/areainac/:id",
+  "/inactivar/:id",
   [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "Digite el id").isMongoId(),
@@ -61,7 +61,7 @@ routers.put(
 );
 
 routers.put(
-  "/areaact/:id",
+  "/activar/:id",
   [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "Digite el id").isMongoId(),

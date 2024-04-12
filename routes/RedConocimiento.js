@@ -8,11 +8,11 @@ import helpersRedConocimiento from "../helpers/RedConocimiento.js";
 
 const router = new Router()
 
-// Get
+
 router.get('/redconocimientobusca', validarJWT, httpRedConocimiento.getRedConocimiento)
 router.get('/redconocimientobuscanombre/:Nombre', validarJWT, httpRedConocimiento.getRedConocimientoNombre)
 
-// Post
+
 router.post('/redconocimentocrear', [
     validarJWT,
     validarRolAdmin,
@@ -21,7 +21,7 @@ router.post('/redconocimentocrear', [
     validarCampos
 ], httpRedConocimiento.postRedConocimiento)
 
-// Put
+
 router.put('/redconocimientomodificar/:id', [
     validarJWT,
     validarRolAdmin,

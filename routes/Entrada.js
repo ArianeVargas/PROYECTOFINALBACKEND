@@ -25,12 +25,12 @@ router.post(
     [
         validarJWT,
         validarRolAdmin,
-        check("cantidad", "Digite cantidad").not().isEmpty(),
-        /*     check("cantidad", "").custom(
+        check("Cantidad", "Digite Cantidad").not().isEmpty(),
+        /*     check("Cantidad", "").custom(
               helpersEntrada.validarEntradaUnica
             ), */
-        check("idProducto", "Por favor digite un producto existente").isMongoId(),
-        check("total", "Por favor digite un total").not().isEmpty(),
+        check("Producto_id", "Por favor digite un producto existente").isMongoId(),
+        check("Total", "Por favor digite un Total").not().isEmpty(),
         validarCampos,
     ],
     httpEntrada.postEntrada
@@ -42,12 +42,12 @@ router.put(
         validarJWT,
         validarRolAdmin,
         check("id", "Digite el ID").not().isEmpty(),
-        check("cantidad", "Digite cantidad").not().isEmpty(),
-        /*     check("cantidad", "").custom(
+        check("Cantidad", "Digite Cantidad").not().isEmpty(),
+        /*     check("Cantidad", "").custom(
               helpersEntrada.validarEntradaUnica
             ), */
-        check("idProducto", "Por favor digite un producto existente").isMongoId(),
-        check("total", "Por favor digite un total").not().isEmpty(),
+        check("Producto_id", "Por favor digite un producto existente").isMongoId(),
+        check("Total", "Por favor digite un Total").not().isEmpty(),
         validarCampos,
     ],
     httpEntrada.putEntrada

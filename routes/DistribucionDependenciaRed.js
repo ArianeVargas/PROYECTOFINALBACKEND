@@ -10,7 +10,7 @@ import { validarRolAdmin } from "../middlewares/validar-rol.js";
 const router = new Router()
 
 
-router.get('/disdepredbusca', validarJWT, httpDisDependenciaRed.getDisDepRed)
+router.get('/disdepredbusca', httpDisDependenciaRed.getDisDepRed)
 router.get('/disdepredbuscaid/:id', [
     validarJWT,
     validarRolAdmin,
@@ -19,13 +19,7 @@ router.get('/disdepredbuscaid/:id', [
     validarCampos
 ], httpDisDependenciaRed.getDistribucionById)
 
-/* router.get('/distribucion/:idItem', [
-    validarJWT,
-    validarRolAdmin,
-    check('idItem', 'Digite el id de la distribucion').not().isEmpty(),
-    check('idItem', 'Digite el id de la distribucion').isMongoId(),
-    validarCampos
-], httpDisDependenciaRed.getDisDepRedId) */
+
 
 router.post('/disdepredcrear', [
     validarJWT,
@@ -43,8 +37,7 @@ router.post('/disdepredcrear', [
 
 // Put
 router.put('/disdepredmodificar/:id', [
-    validarJWT,
-    validarRolAdmin,
+ 
     check("id", "Digitel el ID").not().isEmpty(),
     check("id", "ID no válido").isMongoId(),
     check("PresupuestoAsignado", "Ingrese un presupuesto").not().isEmpty(),

@@ -32,8 +32,6 @@ router.post('/destinocrear', [
     check('FechaInicio', "Digite la fecha de Inicio").not().isEmpty(),
     check('FechaInicio', "Fecha Invalida").custom(helpersDestino.validarFechas),
     check('FechaFin', "Digite la fecha de fin").not().isEmpty(),
-    check('Area_id', "Digite el ID del área").not().isEmpty(),
-    check('Area_id', "No es Mongo ID").isMongoId(),
     validarCampos
 ], httpDestino.postDestino)
 
@@ -50,8 +48,6 @@ router.put('/destinomodificar/:id', [
     check('NivelFormacion', "Digite el nivel de formacion").not().isEmpty(),
     check('FechaInicio', "Digite la fecha de Inicio").not().isEmpty(),
     check('FechaFin', "Digite la fecha de fin").not().isEmpty(),
-    check('Area_id', "Digite el ID del área").not().isEmpty(),
-    check('Area_id', "No es Mongo ID").isMongoId(),
     validarCampos
 ], httpDestino.putDestino)
 

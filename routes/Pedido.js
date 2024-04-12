@@ -14,28 +14,24 @@ routers.get('/pedidoabuscaid/:id', [
 ], httpPedido.getPedidosId);
 
 routers.post('/pedidocrear', [
-    check("FechaCreacion", "Se necesita la fecha de creacion").not().isEmpty(),
-    check("FechaEntrega", "Se necesita la fecha de entrega").not().isEmpty(),
-    /*     check("DistribucionLoteFicha_id", "Se necesita la DistribucionLoteFicha_id").not().isEmpty(), 
-        check("Subtotal", "Se necesita el subtotal").not().isEmpty(),  */
-    check("Total", "Se necesita el total").not().isEmpty(),
-    check("Entregado", "¿El pedido esta entregado?").not().isEmpty(),
-    check("Usuario_Id", "Identifique el usuario").not().isEmpty(),
-    check("Ficha_Id", "A que ficha corresponde el pedido").not().isEmpty(),
+    check("InstructorEncargado_id", "Digite el ID de InstructorEncargado").not().isEmpty(),
+    check("InstructorEncargado_id", "No es un Mongo ID válido").isMongoId(),
+    check("InstructorEncargado_id").custom(helpersUsuario.existeHolderById),
+    check("Destino_id", "Digite la Destino").not().isEmpty(),
+    check("Destino_id", "No es un Mongo ID válido").isMongoId(),
+    check("Destino_id").custom(helpersDestino.existeId),
     validarCampos
 ], httpPedido.postPedidos);
 
 routers.put('/pedidomodificar/:id', [
-    check("id", "Digite el id").not().isEmpty(),
-    check("id", "Digite el id").isMongoId(),
-    check("FechaCreacion", "Se necesita la fecha de creacion").not().isEmpty(),
-    check("FechaEntrega", "Se necesita la fecha de entrega").not().isEmpty(),
-    /*   check("IdDistribucionLoteFicha", "Se necesita el IdDistribucionLoteFicha").not().isEmpty().isMongoId(), 
-      check("Subtotal", "Se necesita el subtotal").not().isEmpty(),  */
-    check("Total", "Se necesita el total").not().isEmpty(),
-    check("Entregado", "¿El pedido esta entregado?").not().isEmpty(),
-    check("Usuario_Id", "Identifique el usuario").not().isEmpty(),
-    check("Ficha_Id", "A que ficha corresponde el pedido").not().isEmpty(),
+    check("id", "Digite el ID").not().isEmpty(),
+    check("id", "No es un Mongo ID válido").isMongoId(),
+    check("InstructorEncargado_id", "Digite el ID de InstructorEncargado").not().isEmpty(),
+    check("InstructorEncargado_id", "No es un Mongo ID válido").isMongoId(),
+    check("InstructorEncargado_id").custom(helpersUsuario.existeHolderById),
+    check("Destino_id", "Digite la Destino").not().isEmpty(),
+    check("Destino_id", "No es un Mongo ID válido").isMongoId(),
+    check("Destino_id").custom(helpersDestino.existeId),
     validarCampos
 ], httpPedido.putPedidos);
 

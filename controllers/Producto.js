@@ -38,7 +38,7 @@ const httpProductos = {
         PrecioUnitario,
         Iva,
         Lote_Id,
-        Consumible,
+        tipoProducto,
      /*    ImagenUrl, */
       } = req.body;
       /* const cloudinaryResult = await cloudinary.uploader.upload(Imagen.path);
@@ -52,7 +52,7 @@ const httpProductos = {
         PrecioUnitario,
         Iva,
         Lote_Id,
-        Consumible,
+        tipoProducto,
         /* ImagenUrl: imagenUrl */
       });
       productos.save();
@@ -76,7 +76,7 @@ const httpProductos = {
         PrecioUnitario,
         Iva,
         Lote_Id,
-        Consumible,
+        tipoProducto,
       } = req.body;
       const productos = await Productos.findByIdAndUpdate(
         id,
@@ -88,7 +88,7 @@ const httpProductos = {
           PrecioUnitario,
           Iva,
           Lote_Id,
-          Consumible,
+          tipoProducto,
         },
         { new: true }
       );

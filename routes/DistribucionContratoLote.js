@@ -9,7 +9,7 @@ import { validarRolAdmin } from "../middlewares/validar-rol.js";
 
 const router = new Router()
 
-// Get
+
 router.get('/disconlotebusca', validarJWT, httpDisContratoLote.getDisConLote)
 router.get('/disconlotebuscaid/:id', [
     validarJWT,
@@ -19,14 +19,7 @@ router.get('/disconlotebuscaid/:id', [
     validarCampos
 ], httpDisContratoLote.getDisConLoteById)
 
-// router.get('/distribucion/:idItem',[
-//     validarJWT,
-//     validarRolAdmin,
-//     check('idItem','Digite el id de la distribucion').not().isEmpty(),
-//     check('idItem','Digite el id de la distribucion').isMongoId(),
-//     validarCampos
-// ],httpDisContratoLote.getDistribucionesById)
-// Post
+
 router.post('/disconlotecrear', [
     validarJWT,
     validarRolAdmin,
@@ -41,7 +34,7 @@ router.post('/disconlotecrear', [
     validarCampos
 ], httpDisContratoLote.postDisConLote)
 
-// Put
+
 router.put('/disconlotemodificar/:id', [
     validarJWT,
     validarRolAdmin,

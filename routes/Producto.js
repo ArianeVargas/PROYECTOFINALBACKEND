@@ -1,66 +1,65 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import httpProducto from "../controllers/Producto.js"
+import httpProducto from "../controllers/Producto.js";
+import helpersLote from "../helpers/Lote.js";
 import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middlewares/validarcampos.js"
 import helpersProducto from "../helpers/Producto.js";
 
 const routers = Router();
 
-routers.get('/productobusca', [validarCampos], httpProducto.getProductos); 
+routers.get('/productobusca', [validarCampos], httpProducto.getProductos);
 
-routers.get('/Productobuscaid/:id', [ 
+routers.get('/Productobuscaid/:id', [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "Digite el id").isMongoId(),
     validarCampos
-], httpProducto.getProductosId); 
+], httpProducto.getProductosId);
 
-routers.post('/productocrear', [ 
-    check("Codigo", "Ingrese codigo Producto").not().isEmpty(), 
-    check('Codigo').custom(helpersProducto.existeCodigo), 
-    check("Nombre", "Ingrese nombre Producto").not().isEmpty(), 
-    check('Nombre').custom(helpersGeneral.verificarEspacios), 
-
-    check("Descripcion", "Ingrese descripcion del Producto").not().isEmpty(),
-    check('Descripcion').custom(helpersGeneral.verificarEspacios),  
-
-    check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
-    check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
-    check("PrecioUnitario").custom(helpersProducto.precioValido),
-    check("Iva", "Ingrese el iva del producto ").not().isEmpty(),  
-    check("Consumible", "¿Es consumible o no?").not().isEmpty(),
-    check("Lote_Id", "Ingrese el lote").not().isEmpty(),
-   /*  check('Consumible').custom(helpersGeneral.verificarEspacios),  */  
-    
+routers.post('/productocrear', [
+    check("Codigo", "Ingrese un Codigo").not().isEmpty(),
+    check('Codigo').custom(helpersProducto.existeCodigo),
+    check("Nombre", "Ingrese un Nombre").not().isEmpty(),
+    check("Descripcion", "Ingrese una Descripcion").not().isEmpty(),
+    check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(),
+    check("PrecioUnitario", "Ingrese un precio unitario").not().isEmpty(),
+    check("PrecioUnitario", "El precio unitario debe ser mayor a 0").custom(
+        helpersProducto.precioValido
+    ),
+    check("Iva", "Ingrese el Iva").not().isEmpty(),
+    check("Lote_id", "Ingrese el lote").not().isEmpty(),
+    check("Lote_id", "Id de lote no válida").isMongoId(),
+    check("Lote_id").custom(helpersLote.existeId),
+   
     validarCampos
-], httpProducto.postProductos); 
+], httpProducto.postProductos);
 
-routers.put('/productomodificar/:id', [ 
-    check("Codigo", "Ingrese codigo Producto").not().isEmpty(), 
-
-    check("Nombre", "Ingrese nombre Producto").not().isEmpty(),
-    check("Nombre").custom(helpersGeneral.verificarEspacios), 
-
-    check("Descripcion", "Ingrese descripcion del Producto").not().isEmpty(),
-    check("Descripcion").custom(helpersGeneral.verificarEspacios),  
-
-    check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
-    check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
-    check("PrecioUnitario").custom(helpersProducto.precioValido),
-    check("Iva", "Ingrese el iva del producto ").not().isEmpty(),
-
-    check("Consumible", "¿Es consumible o no?").not().isEmpty(),
-    check("Lote_Id", "Ingrese el lote").not().isEmpty(),
+routers.put('/productomodificar/:id', [
+    check("id", "Ingrese un ID válido").not().isEmpty(),
+    check("id", "Ingrese un ID válido").isMongoId(),
+    check("Codigo", "Ingrese un Codigo").not().isEmpty(),
+    check('Codigo').custom(helpersProducto.existeCodigo),
+    check("Nombre", "Ingrese un Nombre").not().isEmpty(),
+    check("Descripcion", "Ingrese una Descripcion").not().isEmpty(),
+    check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(),
+    check("PrecioUnitario", "Ingrese un precio unitario").not().isEmpty(),
+    check("PrecioUnitario", "El precio unitario debe ser mayor a 0").isFloat({
+        gt: 0,
+    }),
+    check("Iva", "Ingrese el Iva").not().isEmpty(),
+    check("Lote_id", "Ingrese el lote").not().isEmpty(),
+    check("Lote_id", "Id de lote no válida").isMongoId(),
+    check("Lote_id").custom(helpersLote.existeId),
     validarCampos
-  ], httpProducto.putProductos); 
+], httpProducto.putProductos);
 
-routers.put('/productoinac/:id', [ 
+routers.put('/inactivar/:id', [
     check("id", "Digite el id").not().isEmpty().isMongoId(),
     check("id", "Digite el id").isMongoId(),
     validarCampos
 ], httpProducto.putProductosInactivar);
 
-routers.put('/productoact/:id', [
+routers.put('/activar/:id', [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "Digite el id").isMongoId(),
     validarCampos

@@ -19,13 +19,7 @@ router.get('/disareadestinobuscaid/:id', [
     validarCampos
 ], httpDisAreaDestino.getDisAreaDestinoById)
 
-// router.get('/distribucion/:idItem',[
-//     validarJWT,
-//     validarRolAdmin,
-//     check('idItem','Digite el id de la distribucion').not().isEmpty(),
-//     check('idItem','Digite el id de la distribucion').isMongoId(),
-//     validarCampos
-// ],httpDisAreaDestino.getDistribucionesById)
+
 
 router.post('/disareadestinocrear', [
     validarJWT,
@@ -37,7 +31,7 @@ router.post('/disareadestinocrear', [
     check("Destino_id", "ID no válido").custom(helpersDisAreaDestino.existeDistribucion),
     check("DistribucionRedArea_id", "ID no válido").not().isEmpty(),
     check("DistribucionRedArea_id", "ID no válido").isMongoId(),
-    check('Año', 'Ingrese un año').not().isEmpty(),
+   
     validarCampos
 ], httpDisAreaDestino.postDisAreaDestino)
 
@@ -54,7 +48,7 @@ router.put('/disareadestinomodificar/:id', [
     check("Destino_id", "ID no válido").custom(helpersDisAreaDestino.existeDistribucion),
     check("DistribucionRedArea_id", "ID no válido").not().isEmpty(),
     check("DistribucionRedArea_id", "ID no válido").isMongoId(),
-    check('Año', 'Ingrese un año').not().isEmpty(),
+   
     validarCampos
 ], httpDisAreaDestino.putDisAreaDestino)
 

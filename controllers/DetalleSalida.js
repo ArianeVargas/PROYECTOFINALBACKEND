@@ -5,7 +5,7 @@ const httpDetSalida = {
     try {
       const detSalida = await DetSalida.find()
         .populate("Salida_id")
-        .populate("Entrada_id");
+        .populate("Producto_id");
 
       res.json(detSalida);
     } catch (error) {
@@ -19,7 +19,7 @@ const httpDetSalida = {
       const { id } = req.params;
       const detSalida = await DetSalida.findById({ id })
         .populate("Salida_id")
-        .populate("Entrada_id");
+        .populate("Producto_id");
 
       res.json(detSalida);
     } catch (error) {
@@ -33,7 +33,7 @@ const httpDetSalida = {
       const { Salida_id } = req.params;
       const salidas = await DetSalida.find({ Salida_id })
         .populate("Salida_id")
-        .populate("Entrada_id");
+        .populate("Producto_id");
       res.json(salidas);
     } catch (error) {
       res.status(500).json({ error });
@@ -42,13 +42,13 @@ const httpDetSalida = {
 
   postDetalleSalida: async (req, res) => {
     try {
-      const { Numero, CantidadEntregada, cantidadPendiente, Salida_id, Entrada_id, SubTotal } = req.body;
+      const { Numero, CantidadEntregada,CantidadPendiente, Salida_id, Producto_id, SubTotal } = req.body;
       const detSalida = new DetSalida({
         Numero,
         CantidadEntregada, 
         CantidadPendiente,
         Salida_id,
-        Entrada_id,
+        Producto_id,
         SubTotal,
       });
       await detSalida.save();
@@ -62,10 +62,10 @@ const httpDetSalida = {
   putDetalleSalida: async (req, res) => {
     try {
       const { id } = req.params;
-      const { Numero, CantidadEntregada, CantidadPendiente, Salida_id, Entrada_id, SubTotal } = req.body;
+      const { Numero, CantidadEntregada, CantidadPendiente, Salida_id, Producto_id, SubTotal } = req.body;
       const detSalida = await DetSalida.findByIdAndUpdate(
         id,
-        { Numero, CantidadEntregada, CantidadPendiente, Salida_id, Entrada_id, SubTotal },
+        { Numero, CantidadEntregada, CantidadPendiente, Salida_id, Producto_id, SubTotal },
         { new: true }
       );
       res.json(detSalida);
