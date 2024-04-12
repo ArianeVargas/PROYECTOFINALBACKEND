@@ -1,13 +1,13 @@
 import Destino from "../models/Destino.js";
 
-const helpersFicha = {
+const helpersDestino = {
   existeId: async (id, req) => {
     const destino = await Destino.findById(id);
     if (!destino) {
       throw new Error(`Destino no encontrado`);
     }
 
-    req.FichaUpdate = destino;
+    req.DestinoUpdate = destino;
   },
 
   validarFechas: async (fechaInicio, req) => {
@@ -21,22 +21,22 @@ const helpersFicha = {
       throw new Error("La fecha de fin debe ser mayor a la de inicio");
     }
   },
-  validarFichaUnica: async (Codigo) => {
-    const existe = await Destino.findOne({ Codigo });
+  validarDestinoUnica: async (codigo) => {
+    const existe = await Destino.findOne({ codigo });
 
     if (existe) {
       throw new Error("El destino ya esta registrado");
     }
   },
-  validarFichaUnicaEditar: async (id, Codigo) => {
+  validarDestinoUnicaEditar: async (id, codigo) => {
     try {
-      const fichaExiste = await Destino.findOne({
-        Codigo,
+      const DestinoExiste = await Destino.findOne({
+        codigo,
         _id: { $ne: id },
       });
 
-      if (fichaExiste) {
-        throw new Error("Ya existe un destino con este Codigo");
+      if (DestinoExiste) {
+        throw new Error("Ya existe un destino con este codigo");
       }
 
       return true;
@@ -45,4 +45,4 @@ const helpersFicha = {
     }
   },
 };
-export default helpersFicha;
+export default helpersDestino;
