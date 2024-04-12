@@ -52,14 +52,14 @@ const httpRedConocimiento = {
 
   putInactivar: async (req, res) => {
     const { id } = req.params;
-    const red = await RedConocimiento.findByIdAndUpdate(id, { Estado }, { new: true });
+    const red = await RedConocimiento.findByIdAndUpdate(id, { Estado: 0 }, { new: true });
 
     res.json(red);
   },
 
   putActivar: async (req, res) => {
     const { id } = req.params;
-    const red = await ReD.findByIdAndUpdate(id, { Estado }, { new: true });
+    const red = await RedConocimiento.findByIdAndUpdate(id, { Estado: 1 }, { new: true });
 
     res.json(red);
   },
