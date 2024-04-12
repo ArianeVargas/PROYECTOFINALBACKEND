@@ -58,12 +58,12 @@ routers.put('/usuariomodificar/:id', [
     validarCampos
 ], httpUsuario.putUsuarios);
 
-routers.put('/usuarioinac/:id', [
+routers.put('/inactivar/:id', [
     check("id", "Digite el id").not().isEmpty().isMongoId(),
     validarCampos
 ], httpUsuario.putUsuariosInactivar);
 
-routers.put('/usuarioact/:id', [
+routers.put('/activar/:id', [
     check("id", "Digite el id").not().isEmpty().isMongoId(),
     validarCampos
 ], httpUsuario.putUsuariosActivar);
