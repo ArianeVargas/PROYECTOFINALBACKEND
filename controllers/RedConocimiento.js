@@ -43,7 +43,6 @@ const httpRedConocimiento = {
       const { id } = req.params;
       const { Nombre } = req.body;
       const red = await RedConocimiento.findByIdAndUpdate(id, { Nombre: await helpersGeneral.primeraMayuscula(Nombre) }, { new: true });
-
       res.json(red);
     } catch (error) {
       res.status(400).json({ error });
