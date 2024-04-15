@@ -1,5 +1,5 @@
 import { Router } from "express";
-import httpDependencia from "../controllers/Dependencias.js";
+import httpDependencia from "../controllers/DependeNcias.js";
 import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";

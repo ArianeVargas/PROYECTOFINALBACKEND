@@ -14,7 +14,7 @@ const validarRolAdmin = async(req, res, next) => {
 
     const usuario = await Usuario.findById(uid)
 
-    if(usuario.rol!="admin"){
+    if(usuario.Rol!="admin"){
       return res.status(401).json({msg: "Rol no autorizado"})
     }
 
@@ -35,7 +35,7 @@ const validarRolInstructor = async(req, res, next) => {
 
     const usuario = await Usuario.findById(uid)
 
-    if(usuario.rol!="instructor" && usuario.rol!="admin"){
+    if(usuario.Rol!="instructor" && usuario.Rol!="admin"){
       return res.status(401).json({msg: "Rol no autorizado"})
     }
 
@@ -56,7 +56,7 @@ const validarRolBodega = async(req, res, next) => {
 
     const usuario = await Usuario.findById(uid)
 
-    if(usuario.rol!="admin" && usuario.rol!="bodega"){
+    if(usuario.Rol!="admin" && usuario.Rol!="bodega"){
       return res.status(401).json({msg: "Rol no autorizado"})
     }
 
