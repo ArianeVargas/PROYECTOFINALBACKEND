@@ -8,7 +8,7 @@ import helpersDestino from "../helpers/Destino.js";
 
 const router = new Router();
 
-router.get("/salidabusca", /* validarJWT */ httpSalida.getSalidas);
+router.get("/salidabusca", validarJWT , httpSalida.getSalidas);
 
 router.get(
     "/salidabuscaid/:id",

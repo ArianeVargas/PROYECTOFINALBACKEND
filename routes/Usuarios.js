@@ -59,7 +59,8 @@ routers.put('/usuariomodificar/:id', [
 ], httpUsuario.putUsuarios);
 
 routers.put('/inactivar/:id', [
-    check("id", "Digite el id").not().isEmpty().isMongoId(),
+    check("id", "Digite el id").not().isEmpty(),
+    check("id", "Digite el id").isMongoId(),
     validarCampos
 ], httpUsuario.putUsuariosInactivar);
 
