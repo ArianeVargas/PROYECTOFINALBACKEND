@@ -3,8 +3,8 @@ import httpProceso from "../controllers/Proceso.js";
 import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import helpersPresupuesto from "../helpers/presupuesto.js";
-import helpersProceso from "../helpers/Proceso.js";
+// import helpersPresupuesto from "../helpers/presupuesto.js";
+// import helpersProceso from "../helpers/Proceso.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
 
 const router=new Router()
@@ -26,7 +26,7 @@ router.post('/procesocrear',[
     validarJWT,
     validarRolAdmin,
     check("PresupuestoAsignado", "Ingrese un presupuesto").not().isEmpty(),
-    check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
+    // check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
     check('Codigo', 'Ingrese el código').not().isEmpty(),
     // check('Proceso_id', 'Ingrese el proceso').not().isEmpty(),
     // check('Proceso_id').custom(helpersProceso.existeId),
@@ -40,7 +40,7 @@ router.put('/procesomodificar/:id', [
     check("id", "Digitel el ID").not().isEmpty(),
     check("id", "ID no válido").isMongoId(),
     check("PresupuestoAsignado", "Ingrese un presupuesto").not().isEmpty(),
-    check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
+    // check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
     check('Codigo', 'Ingrese el código').not().isEmpty(),
     validarCampos
 ], httpProceso.putProceso)

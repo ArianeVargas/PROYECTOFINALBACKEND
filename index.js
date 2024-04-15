@@ -17,6 +17,7 @@ import Entrada from "./routes/Entrada.js";
 import RedConocimiento from "./routes/RedConocimiento.js";
 import Salida from "./routes/Salida.js";
 import Usuarios from "./routes/Usuarios.js";
+import Proceso from "./routes/Proceso.js";
 import Contrato from "./routes/Contrato.js";
 import ConexionRedLote from "./routes/ConexionRedLote.js";
 import cors from "cors"
@@ -44,6 +45,7 @@ index.use("/api/disredarea", DistribucionRedArea)
 index.use("/api/entrada", Entrada)
 index.use("/api/redconocimiento", RedConocimiento)
 index.use("/api/salida", Salida)
+index.use("/api/proceso", Proceso)
 
 index.listen(process.env.PORT, () => {
     console.log(
