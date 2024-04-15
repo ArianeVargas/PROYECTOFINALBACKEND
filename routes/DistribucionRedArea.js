@@ -31,7 +31,7 @@ router.get(
 ], httpDisRedArea.getDisRedAreaIdDistribucion) */
 
 router.post(
-    "/agregar",
+    "/disredareacrear",
     [
         validarJWT,
         validarRolAdmin,
@@ -58,7 +58,7 @@ router.post(
 // ], httpDisDependenciaRed.putAjustarPresupuesto)
 
 router.put(
-    "/editar/:id",
+    "/disredareamodificar/:id",
     [
         validarJWT,
         validarRolAdmin,
