@@ -17,7 +17,7 @@ const helpersRedConocimiento = {
 
       if(existe){
         if (req.req.method === "PUT" && req.req.body._id != existe._id) {
-          throw new Error(`Ya existe ese nombre en la base de datos!!`);
+          throw new Error(`Ya existe ese nombre en la base de datose!!`);
         } else if (req.req.method === "POST") {
           throw new Error(`Ya existe ese nombre en la base de datos!!`);
         }

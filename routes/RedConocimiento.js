@@ -13,7 +13,7 @@ router.get('/redconocimientobusca',  httpRedConocimiento.getRedConocimiento)
 router.get('/redconocimientobuscanombre/:Nombre', httpRedConocimiento.getRedConocimientoNombre)
 
 
-router.post('/redconocimentocrear', [
+router.post('/redconocimientocrear', [
     validarJWT,
     validarRolAdmin,
     check("Nombre", "Ingrese un nombre").not().isEmpty(),
