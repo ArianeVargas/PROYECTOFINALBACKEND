@@ -3,13 +3,12 @@ import httpDependencia from "../controllers/Dependencias.js";
 import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import helpersPresupuesto from "../helpers/Presupuesto.js";
+// import helpersPresupuesto from "../helpers/Presupuesto.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
 import helpersDependencia from "../helpers/Dependencias.js";
 
 const router=new Router()
 
-// Get
 router.get('/dependenciabusca', validarJWT, httpDependencia.getDependencia)
 router.get('/dependenciabuscanombre/:Nombre', validarJWT, httpDependencia.getDependenciaNombre) 
 router.get('/dependenciabuscaid/:id', [ 
@@ -21,26 +20,26 @@ router.get('/dependenciabuscaid/:id', [
 ], httpDependencia.getDependenciaId) 
 
 
-// Post
+
 router.post('/dependenciacrear',[
   validarJWT,
   validarRolAdmin,
-    check("nombre", "Ingrese un nombre").not().isEmpty(),
-    check('nombre').custom(helpersDependencia.existeNombre),
-    check("codigo", "Ingrese un codigo").not().isEmpty(),
-    check('codigo').custom(helpersDependencia.existeCodigo),
+    check("Nombre", "Ingrese un Nombre").not().isEmpty(),
+    check('Nombre').custom(helpersDependencia.existeNombre),
+    check("Codigo", "Ingrese un Codigo").not().isEmpty(),
+    check('Codigo').custom(helpersDependencia.existeCodigo),
     validarCampos
 ],httpDependencia.postDependencia)
 
-// Put
+
 router.put('/dependenciamodificar/:id', [
   validarJWT,
   validarRolAdmin,
     check("id", "ID no válido").isMongoId(),
-    check("nombre", "Ingrese un nombre").not().isEmpty(),
-    check('nombre').custom(helpersDependencia.existeNombre),
-    check("codigo", "Ingrese un codigo").not().isEmpty(),
-    check('codigo').custom(helpersDependencia.existeCodigo),
+    check("Nombre", "Ingrese un Nombre").not().isEmpty(),
+    check('Nombre').custom(helpersDependencia.existeNombre),
+    check("Codigo", "Ingrese un Codigo").not().isEmpty(),
+    check('Codigo').custom(helpersDependencia.existeCodigo),
     validarCampos
 ], httpDependencia.putEditar)
 
