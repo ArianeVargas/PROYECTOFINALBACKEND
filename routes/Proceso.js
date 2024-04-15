@@ -1,5 +1,5 @@
 import { Router } from "express"
-import httpProceso from "../controllers/proceso.js";
+import httpProceso from "../controllers/Proceso.js";
 import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
@@ -25,11 +25,11 @@ router.get('/procesobuscaid/:id',[
 router.post('/procesocrear',[
     validarJWT,
     validarRolAdmin,
-    check("presupuestoAsignado", "Ingrese un presupuesto").not().isEmpty(),
-    check("presupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
-    check('codigo', 'Ingrese el código').not().isEmpty(),
-    check('idProceso', 'Ingrese el proceso').not().isEmpty(),
-    check('idProceso').custom(helpersProceso.existeId),
+    check("PresupuestoAsignado", "Ingrese un presupuesto").not().isEmpty(),
+    check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
+    check('Codigo', 'Ingrese el código').not().isEmpty(),
+    // check('Proceso_id', 'Ingrese el proceso').not().isEmpty(),
+    // check('Proceso_id').custom(helpersProceso.existeId),
     validarCampos
 ],httpProceso.postProceso)
 
@@ -39,9 +39,9 @@ router.put('/procesomodificar/:id', [
     validarRolAdmin,
     check("id", "Digitel el ID").not().isEmpty(),
     check("id", "ID no válido").isMongoId(),
-    check("presupuestoAsignado", "Ingrese un presupuesto").not().isEmpty(),
-    check("presupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
-    check('codigo', 'Ingrese el código').not().isEmpty(),
+    check("PresupuestoAsignado", "Ingrese un presupuesto").not().isEmpty(),
+    check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
+    check('Codigo', 'Ingrese el código').not().isEmpty(),
     validarCampos
 ], httpProceso.putProceso)
 
@@ -50,7 +50,7 @@ router.put('/ajustarpresupuesto/:id',[
     validarRolAdmin,
     check("id", "Digite el id").not().isEmpty(),
     check("id", "No es mongo ID").isMongoId(),
-    check("presupuestoAsignado","No hay ningun presupuesto").not().isEmpty(),
+    check("PresupuestoAsignado","No hay ningun presupuesto").not().isEmpty(),
     validarCampos,
 ], httpProceso.putAjustarPresupuesto)
 
