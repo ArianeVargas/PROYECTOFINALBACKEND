@@ -4,7 +4,7 @@ import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import helpersDetSalida from "../helpers/DetalleSalida.js";
-import helpersSalida from "../helpers/salida.js";
+import helpersSalida from "../helpers/Salida.js";
 import helpersProducto from "../helpers/Producto.js";
 
 const router = new Router();
